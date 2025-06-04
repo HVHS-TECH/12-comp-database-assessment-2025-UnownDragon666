@@ -2,6 +2,9 @@
 AS91896 Use advanced programming techniques to develop a computer program (2.7)
 Written by Idrees Munshi Term 1 2025
 
+12 Computer Science Databases Assessment
+AS91892 Use advanced techniques to develop a database (2.3)
+
 This project is a game about catching falling objects to increase your score, avoiding dangers, and trying to get the highest score you can.
 Javascript, HTML, and CSS are the only languages used in this project.
 
