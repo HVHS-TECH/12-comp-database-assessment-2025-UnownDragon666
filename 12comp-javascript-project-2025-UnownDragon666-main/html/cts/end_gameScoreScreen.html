@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>End screen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/cts/end_scoreScreenStyle.css">
+</head>
+
+<body onload="end_pageLoadSetup()">
+    <h1 id="h_endMessage"></h1>
+    <p id="p_score"></p>
+    <p id="p_error"></p>
+    <div id="d_buttonContainer">
+        <button class="end_button" id="b_replayButton" onclick="end_restartGame()">Again!</button>
+        <button class="end_button" id="b_submitScoreButton" onclick="end_submitscore()">Submit score</button>
+        <button class="end_button" id="b_settingsButton" onclick="end_toSettingsPage()">Change settings</button>
+        <button class="end_button" id="b_homeButton" onclick="end_toHubPage()">Home</button>
+    </div>
+    <script type="module" src="../../js/fb/main.mjs"></script>
+    <script type="module" src="../../js/cts/end_scoreScreenScript.js"></script>
+</body>
+
+</html>
