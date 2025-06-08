@@ -1,5 +1,34 @@
+:root {
+    --containerBg: #484963;
+}
+
 #h_authTitle {
     font-weight: bold;
     font-size: 3.5rem;
-    margin-bottom: 1.5rem;
+    margin: 0px;
+}
+
+#d_optContainer {
+    background-color: var(--containerBg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    height: 50vh;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.login {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 50%;
+    background-color: var(--buttonBg);
+    border: none;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
 }

@@ -21,13 +21,13 @@ import {
 window.fb_writeRec = fb_writeRec;
 window.init = fb_initialise;
 window.fb_readRec = fb_readRec;
-window.fb_authenticate = fb_authenticate.then(
-    // Check if the user exists in the database
+window.fb_authenticate = fb_authenticate// .then(
+// Check if the user exists in the database
 
-    // If not, create a new user and ask them for the required information
-    // username, password, confirm password, age, gender, agree to Terms and Conditions 
-    // Welcome new user to the site, allow them to 
-);
+// If not, create a new user and ask them for the required information
+// username, password, confirm password, age, gender, agree to Terms and Conditions 
+// Welcome new user to the site, allow them to 
+// );
 window.fb_logout = fb_logout;
 window.main_indexSetup = main_indexSetup;
 
