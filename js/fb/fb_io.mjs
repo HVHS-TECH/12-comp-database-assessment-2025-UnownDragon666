@@ -2,12 +2,11 @@
 // fb_io.mjs
 // Written by Idrees Munshi
 // Term 2 2025
-//
-// 
 /*******************************************************/
 const COL_C = 'white';	    // These two const are part of the coloured 	
 const COL_B = '#CD7F32';	//  console.log for functions scheme
-console.log('%cfb_io.mjs running', 'color: blue; background-color: white;');
+console.log('%cfb_io.mjs running',
+    'color: blue; background-color: white;');
 
 // Variables
 
@@ -49,7 +48,6 @@ function fb_initialise() {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
-    console.info(database);
 }
 
 /*******************************************************/
@@ -63,30 +61,35 @@ function fb_authenticate() {
     console.log('%c fb_authenticate(): ',
         'color: ' + COL_C + '; background-color: ' + COL_B + ';');
 
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
+    return new Promise((resolve, reject) => {
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
 
-    signInWithPopup(auth, provider).then((result) => {
-        document.getElementById('p_userGreeting').textContent = 'Hello ' + result.user.displayName + '!';
-        document.getElementById('b_login').style.display = 'none';
-        document.getElementById('b_logout').disabled = false;
-        fb_readRec('users/' + result.user.uid).then((data) => {
-            if (data == null) {
-                fb_writeRec('users/' + result.user.uid, {
-                    uid: AUTH.currentUser.uid,
-                    email: auth.currentUser.email,
-                    name: auth.currentUser.displayName,
-                    photoURL: auth.currentUser.photoURL,
-                    providerId: auth.currentUser.providerId,
-                    metadata: auth.currentUser.metadata,
-                    providerData: auth.currentUser.providerData
-                });
-            }
-        })
-    }).catch((error) => {
-        console.error(error);
-    });
+        signInWithPopup(auth, provider).then((result) => {
+            document.getElementById('p_userGreeting').textContent = 'Hello ' + result.user.displayName + '!';
+            document.getElementById('b_login').style.display = 'none';
+            document.getElementById('b_logout').disabled = false;
+            fb_readRec('users/' + result.user.uid).then((data) => {
+                if (data === null) {
+                    fb_writeRec('users/' + result.user.uid, {
+                        uid: AUTH.currentUser.uid,
+                        email: auth.currentUser.email,
+                        name: auth.currentUser.displayName,
+                        photoURL: auth.currentUser.photoURL,
+                        providerId: auth.currentUser.providerId,
+                        metadata: auth.currentUser.metadata,
+                        providerData: auth.currentUser.providerData
+                    });
+                }
+            })
+            auth.onAuthStateChanged((user) => {
+                resolve(user);
+            })
+        }).catch((error) => {
+            console.error(error);
+        });
+    })
 }
 
 /*******************************************************/
@@ -94,24 +97,30 @@ function fb_authenticate() {
 // Update login status
 // Called in index.html
 // Input: N/A
-// Returns: N/A
+// Returns: Boolean of whether user is logged in
 /*******************************************************/
 function fb_updateLoginStatus() {
     console.log('%c fb_updateLoginStatus(): ',
         'color: ' + COL_C + '; background-color: ' + COL_B + ';');
 
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
-            document.getElementById('b_login').style.display = 'none';
-            document.getElementById('b_logout').disabled = false;
-        } else {
-            document.getElementById('p_userGreeting').textContent = 'Please log in';
-            document.getElementById('b_login').style.display = 'block';
-            document.getElementById('b_logout').disabled = true;
-        }
-    })
+    return new Promise((resolve, reject) => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
+                document.getElementById('b_login').style.display = 'none';
+                document.getElementById('b_logout').disabled = false;
+                resolve(true);
+            } else {
+                document.getElementById('p_userGreeting').textContent = 'Please log in';
+                document.getElementById('b_login').style.display = 'block';
+                document.getElementById('b_logout').disabled = true;
+                resolve(false);
+            }
+        }, (error) => {
+            reject(error);
+        });
+    });
 }
 
 /*******************************************************/

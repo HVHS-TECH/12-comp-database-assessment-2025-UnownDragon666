@@ -12,7 +12,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
+<body onload="document.addEventListener('DOMContentLoaded', setup())">
     <div id="d_layout">
         <!-- Sidebar -->
         <aside id="s_sidebar" class="collapsed">
@@ -46,7 +46,8 @@
             </header>
 
             <section id="s_googleAuthContainer">
-                <button id="b_googleLogin">Sign up with Google</button>
+                <button id="b_googleLogin" onclick="signup()" style="display: none;">Sign up with Google</button>
+                <p id="p_error"></p>
             </section>
 
             <section id="s_regFormContainer">
@@ -55,7 +56,8 @@
 
         <!-- JS -->
         <script type="module" src="../../js/gm/gm_main.mjs"></script>
-        <script src="../../js/fb/main.mjs"></script>
+        <script type="module" src="../../js/fb/main.mjs"></script>
+        <script type="module" src="../../js/gm/gmReg_registerScript.mjs"></script>
     </div>
 </body>
 

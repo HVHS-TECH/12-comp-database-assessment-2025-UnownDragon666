@@ -2,7 +2,8 @@
     text-align: center;
     margin: 0;
     padding: 0;
-    font-size: 5rem;
+    font-size: 4rem;
+    translate: 0 -2rem;
 }
 
 #s_regFormContainer {
@@ -36,8 +37,22 @@
     background-color: var(--buttonBg);
     border: none;
     padding: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+}
 
+#b_googleLogin:hover {
+    background-color: var(--buttonHover);
+}
+
+#b_googleLogin:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#p_error {
+    color: red;
+    margin: 0.5rem;
 }
