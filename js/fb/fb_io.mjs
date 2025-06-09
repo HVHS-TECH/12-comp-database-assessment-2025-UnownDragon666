@@ -11,7 +11,7 @@ console.log('%cfb_io.mjs running',
 // Variables
 
 // Imports
-import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+import { getDatabase, ref, set, get, update } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
@@ -19,7 +19,7 @@ import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChang
 export {
     fb_initialise, fb_authenticate, fb_readRec, fb_writeRec,
     fb_logout, fb_loggedIn, getAuth, fb_updateLoginStatus,
-    fb_profileAuthState
+    fb_profileAuthState, fb_updateRec
 }
 
 /*******************************************************/
@@ -184,7 +184,7 @@ function fb_readRec(_path) {
 /*******************************************************/
 // fb_writeRec
 // Write record to Firebase
-// Called by end_gameScoreScreen.html
+// Called in many locations throughout project, including during authertication
 // Input: _path as a string (path to write to), _data as an object (data to write)
 // Returns: N/A
 /*******************************************************/
@@ -198,5 +198,25 @@ function fb_writeRec(_path, _data) {
         console.log('Data written successfully');
     }).catch((error) => {
         console.error('Error writing data: ', error);
+    });
+}
+
+/*******************************************************/
+// fb_updateRec
+// Update record in Firebase
+// Called in authentication, to add user data to Firebase
+// Input: _path as a string (path to update), _data as an object (data to update)
+// Returns: N/A
+/*******************************************************/
+function fb_updateRec(_path, _data) {
+    console.log('%c fb_updateRec(): ',
+        'color: ' + COL_C + '; background-color: ' + COL_B + ';');
+
+    const DB = getDatabase();
+    const REF = ref(DB, _path);
+    update(REF, _data).then(() => {
+        console.log('Data updated successfully');
+    }).catch((error) => {
+        console.error('Error updating data: ', error);
     });
 }

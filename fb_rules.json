@@ -1,0 +1,75 @@
+{
+    "rules": {
+        "admins": {
+            ".read": "true === root.child('admins').hasChild(auth.uid)",
+            ".write": false
+        },
+        "accounts": {
+            ".read": "auth != null",
+            ".indexOn": [
+                "name",
+                "favoriteFruit"
+            ],
+            "$uid": {
+                ".write": "$uid === auth.uid || true === root.child('admins').hasChild(auth.uid)",
+                "name": {
+                    ".read": true
+                },
+                "email": {
+                    ".read": "auth.uid === $uid"
+                }
+            },
+            ".write": false
+        },
+        "users": {
+            ".read": "auth != null",
+            ".indexOn": [
+                "name",
+                "favoriteFruit"
+            ],
+            "$uid": {
+                ".write": "$uid === auth.uid || true === root.child('admins').hasChild(auth.uid)",
+                "name": {
+                    ".read": true
+                },
+                "email": {
+                    ".read": "auth.uid === $uid"
+                }
+            },
+            ".write": false
+        },
+        "salsStrawberrySaloon": {
+            "users": {
+                ".read": "auth != null",
+                ".indexOn": [
+                    "favoriteFruit"
+                ],
+                "$uid": {
+                    "name": {
+                        ".read": "auth != null"
+                    },
+                    "favoriteFruit": {
+                        ".read": "auth != null",
+                        ".validate": "newData.isString()"
+                    },
+                    ".read": "true === root.child('admins').hasChild(auth.uid) || auth.uid === $uid",
+                    ".write": "auth.uid === $uid"
+                }
+            }
+        },
+        "rand": {
+            ".read": true,
+            ".write": true
+        },
+        "numbers": {
+            ".read": true,
+            ".write": true
+        },
+        "scores": {
+            ".read": true,
+            ".write": true
+        },
+        ".read": "true === root.child('admins').hasChild(auth.uid)",
+        ".write": "true === root.child('admins').hasChild(auth.uid)"
+    }
+}

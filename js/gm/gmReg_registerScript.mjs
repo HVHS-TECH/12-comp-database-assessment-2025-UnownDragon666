@@ -15,7 +15,9 @@ console.log('%cgmReg_registerScript.mjs running', 'color: blue; background-color
 
 // Imports
 import {
-    fb_authenticate, fb_initialise, fb_readRec, fb_updateLoginStatus, fb_writeRec, getAuth
+    fb_authenticate, fb_initialise, fb_readRec,
+    fb_updateLoginStatus, fb_writeRec, getAuth,
+    fb_updateRec
 } from '../fb/fb_io.mjs';
 
 /*******************************************************/
@@ -26,12 +28,8 @@ window.setup = () => {
     fb_updateLoginStatus().then((userBoolean) => {
         if (userBoolean) {
             fb_readRec('accounts/' + getAuth().currentUser.uid).then((data) => {
-                if (data !== null) {
-                    document.getElementById('p_error').innerHTML = 'You already have an account! You are logged in as ' + data.name + '.';
-                    document.getElementById('b_googleLogin').disabled = true;
-                } else {
-                    document.getElementById('b_googleLogin').style.display = 'block';
-                    document.getElementById('b_googleLogin').disabled = false;
+                if (data !== undefined) {
+                    document.getElementById('p_error').innerHTML = 'You are logged in as ' + data.name + '.';
                 }
             })
         } else {
@@ -49,9 +47,9 @@ window.signup = () => {
         fb_readRec('accounts/' + getAuth().currentUser.uid).then((data) => {
             // Check if user already has an account
             if (data !== null) {
-                document.getElementById('p_error').innerHTML = 'You already have an account! You are logged in as ' + data.name + '.';
+                document.getElementById('p_error').innerHTML = 'You are logged in as ' + data.name + '.';
                 setTimeout(() => {
-                    Window.location.href = './gmAcc_profile.html';
+                    window.location.href = './gmAcc_profile.html';
                 }, 3000);
             } else if (data === null) {
                 const auth = getAuth();
@@ -91,34 +89,35 @@ function gmReg_expandForm() {
     // Create form elements, and append them to the form section
     let form = document.createElement('form');
 
-    // Ask for display name, age, pronouns, password and confirm password and terms and conditions
+    // Ask for display name, birthdate, pronouns, password and confirm password and terms and conditions
 
     // Name
     let nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.name = 'name';
     nameInput.id = 'i_name';
+    nameInput.required = true;
     nameInput.placeholder = 'Enter your name';
     let nameLabel = document.createElement('label');
     nameLabel.setAttribute('for', 'i_name');
     nameLabel.innerHTML = 'What would you like to be called?';
 
-    // Age 
-    let ageInput = document.createElement('input');
-    ageInput.type = 'number';
-    ageInput.name = 'age';
-    ageInput.id = 'i_age';
-    ageInput.placeholder = 'Enter your age';
-    let ageLabel = document.createElement('label');
-    ageLabel.setAttribute('for', 'i_age');
-    ageLabel.innerHTML = 'How old are you?';
+    // Birthdate 
+    let birthdateInput = document.createElement('input');
+    birthdateInput.type = 'date';
+    birthdateInput.name = 'birthdate';
+    birthdateInput.id = 'i_birthdate';
+    birthdateInput.required = true;
+    let birthdateLabel = document.createElement('label');
+    birthdateLabel.setAttribute('for', 'i_birthdate');
+    birthdateLabel.innerHTML = 'When were you born?';
 
     // Pronouns
     let pronounInput = document.createElement('input');
     pronounInput.type = 'text';
     pronounInput.name = 'pronouns';
     pronounInput.id = 'i_pronouns';
-    pronounInput.placeholder = 'Enter your pronouns';
+    pronounInput.placeholder = 'Enter your pronouns (not required)';
     let pronounLabel = document.createElement('label');
     pronounLabel.setAttribute('for', 'i_pronouns');
     pronounLabel.innerHTML = 'What pronouns do you identify with?';
@@ -128,6 +127,7 @@ function gmReg_expandForm() {
     passwordInput.type = 'password';
     passwordInput.name = 'password';
     passwordInput.id = 'i_password';
+    passwordInput.required = true;
     passwordInput.placeholder = 'Enter your password';
     let passwordLabel = document.createElement('label');
     passwordLabel.setAttribute('for', 'i_password');
@@ -138,6 +138,7 @@ function gmReg_expandForm() {
     confirmPasswordInput.type = 'password';
     confirmPasswordInput.name = 'confirmPassword';
     confirmPasswordInput.id = 'i_confirmPassword';
+    confirmPasswordInput.required = true;
     confirmPasswordInput.placeholder = 'Confirm your password';
     let confirmPasswordLabel = document.createElement('label');
     confirmPasswordLabel.setAttribute('for', 'i_confirmPassword');
@@ -157,12 +158,15 @@ function gmReg_expandForm() {
     let submitButton = document.createElement('button');
     submitButton.innerHTML = "Let's go!";
     submitButton.id = 'b_submit';
-    submitButton.onclick = gmReg_submitForm;
+    submitButton.onclick = (event) => {
+        event.preventDefault();
+        gmReg_submitForm();
+    };
 
     form.appendChild(nameLabel);
     form.appendChild(nameInput);
-    form.appendChild(ageLabel);
-    form.appendChild(ageInput);
+    form.appendChild(birthdateLabel);
+    form.appendChild(birthdateInput);
     form.appendChild(pronounLabel);
     form.appendChild(pronounInput);
     form.appendChild(passwordLabel);
@@ -182,4 +186,36 @@ function gmReg_expandForm() {
 // Input: N/A
 // Returns: N/A
 /*******************************************************/
-function gmReg_submitForm() { }
+function gmReg_submitForm() {
+    // Get form values
+    const name = document.getElementById('i_name').value;
+    const birthdate = document.getElementById('i_birthdate').value;
+    const pronouns = document.getElementById('i_pronouns').value;
+    const password = document.getElementById('i_password').value;
+    const confirmPassword = document.getElementById('i_confirmPassword').value;
+    const terms = document.getElementById('i_terms').checked;
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+
+    // Check if terms and conditions are checked
+    if (!terms) {
+        alert('You must agree to the terms and conditions');
+        return;
+    }
+
+    // In future, may use createUserWithEmailAndPassword to create a new user
+    // and store their information using the Firebase Authentication API
+    // For now, we will store their information using the Firebase Realtime Database API
+
+    fb_updateRec('accounts/' + getAuth().currentUser.uid, {
+        name: name,
+        birthdate: birthdate,
+        pronouns: pronouns,
+        password: password
+    })
+    window.location.href = './gmAcc_profile.html';
+}
