@@ -24,22 +24,22 @@ const sidebar = document.getElementById('s_sidebar');
 const sidebarToggle = document.getElementById('b_sidebarToggle');
 
 const games = {
-    'd_catchTheStarsContainer' : {
+    'd_catchTheStarsContainer': {
         title: 'Catch the Stars',
         description: 'Help the villagers collect the falling stars.',
         url: './html/cts/cts_startScreen.html'
-    }, 
-    'd_whackAMoleContainer' : {
+    },
+    'd_whackAMoleContainer': {
         title: 'Whack a Mole',
         description: 'Whack some moles with friends!',
         url: './html/wam/wam_startScreen.html'
     },
-    'game3' : {
+    'game3': {
         title: 'Game 3 Title',
         description: 'Description of Game 3 goes here. Provide a brief overview of the game and its objectives.',
         url: './path_to_game3.html'
     },
-    'game4' : {
+    'game4': {
         title: 'Game 4 Title',
         description: 'Description of Game 4 goes here. Provide a brief overview of the game and its objectives.',
         url: './path_to_game4.html'
