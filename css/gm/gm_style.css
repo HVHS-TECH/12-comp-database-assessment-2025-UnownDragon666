@@ -39,6 +39,7 @@ body {
 }
 
 /* Sidebar styling */
+/* Note: Some of the following sidebar code was written by Prem Shahi, I have used and edited it to suit my needs */
 
 #s_sidebar {
     background-color: var(--sidebarColor);
@@ -75,6 +76,7 @@ body {
     cursor: pointer;
     z-index: 10;
 }
+
 
 #s_sidebar.collapsed *:not(#b_sidebarToggle):not(nav) {
     opacity: 0;

@@ -1,11 +1,11 @@
 /*******************************************************/
-// gmAcc_authScript.mjs
+// gm_main.mjs
 // Written by Idrees Munshi
 // Term 2 2025
 //
-// gmAcc_auth.html script
+// Main script for game manager pages
 /*******************************************************/
-console.log('%cgmAcc_authScript.mjs running', 'color: blue; background-color: white;');
+console.log('%cgm_main.mjs running', 'color: green; background-color: white;');
 
 /*******************************************************/
 // Variables
