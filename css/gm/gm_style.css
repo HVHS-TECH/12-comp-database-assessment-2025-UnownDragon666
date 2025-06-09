@@ -4,7 +4,7 @@
 /* CSS Variables */
 
 :root {
-    --backgroundColor: #2a2b3c;
+    /* --backgroundColor: #2a2b3c;
     --textColor: #f5f5f5;
     --sidebarColor: #1f2030;
     --accentColor: #4f5d75;
@@ -13,7 +13,18 @@
     --buttonBg: #3a3b4d;
     --buttonHover: #50516a;
     --modalBg: rgba(0, 0, 0, 0.7);
-    --cardBg: #3c3d4f;
+    --cardBg: #3c3d4f; */
+
+    --backgroundColor: #2B97CC;
+    --textColor: #f5f5f5;
+    --sidebarColor: #0986C2;
+    --accentColor: #FF9D2B;
+    --highlightColor: #FFC42B;
+    --highlightHover: #FFD054;
+    --buttonBg: #05618E;
+    --buttonHover: #05608edb;
+    --modalBg: rgba(0, 0, 0, 0.7);
+    --cardBg: #05618E;
 }
 
 /* Global styling */

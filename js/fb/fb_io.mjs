@@ -70,19 +70,6 @@ function fb_authenticate() {
             document.getElementById('p_userGreeting').textContent = 'Hello ' + result.user.displayName + '!';
             document.getElementById('b_login').style.display = 'none';
             document.getElementById('b_logout').disabled = false;
-            fb_readRec('users/' + result.user.uid).then((data) => {
-                if (data === null) {
-                    fb_writeRec('users/' + result.user.uid, {
-                        uid: AUTH.currentUser.uid,
-                        email: auth.currentUser.email,
-                        name: auth.currentUser.displayName,
-                        photoURL: auth.currentUser.photoURL,
-                        providerId: auth.currentUser.providerId,
-                        metadata: auth.currentUser.metadata,
-                        providerData: auth.currentUser.providerData
-                    });
-                }
-            })
             auth.onAuthStateChanged((user) => {
                 resolve(user);
             })
