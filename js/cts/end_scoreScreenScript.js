@@ -7,20 +7,22 @@
 console.log('%cend_scoreScreenScript.js running', 'color:blue; background-color: white;')
 
 /*******************************************************/
+// Imports
+/*******************************************************/
+import {
+    fb_initialise, fb_authenticate, fb_writeRec, getAuth
+} from '../fb/fb_io.mjs';
+
+fb_initialise();
+/*******************************************************/
 // Constants
 /*******************************************************/
 const SCORE = parseInt(sessionStorage.getItem("game_playerScore"));
 const WINDOWRESIZED = sessionStorage.getItem("game_windowResized");
 const DEBUGGED = sessionStorage.getItem("game_playerDebugged");
 const DIFF = sessionStorage.getItem('difficulty');
-
-// Imports
-import {
-    fb_authenticate, fb_writeRec, getAuth
-} from '../fb/fb_io.mjs';
-
-// Constants
 const auth = getAuth();
+
 /*******************************************************/
 // Constants
 /*******************************************************/
@@ -56,6 +58,8 @@ const MESSAGEARRAY = [
 // Returns: N/A
 /*******************************************************/
 function end_pageLoadSetup() {
+
+
     if (SCORE == null) {
         // If the player score is null, set it to 0
         SCORE = 0;
@@ -73,7 +77,7 @@ function end_pageLoadSetup() {
     if (DEBUGGED == 'true') {
         document.getElementById('p_error').innerHTML = "Sorry, debug is only for dev purposes, this score isn't able to be submitted.";
         document.getElementById('b_submitScoreButton').disabled = true;
-    }   
+    }
 
     // Displays players score from last play
     end_displayScore();
@@ -143,7 +147,7 @@ function end_submitscore() {
         return;
     }
 
-    auth != null? fb_writeRec('scores/' + DIFF + '/' + auth.currentUser.displayName, SCORE): fb_authenticate();
+    auth != null ? fb_writeRec(`cts/${DIFF}/scores/${auth.currentUser.uid}`, SCORE) : fb_authenticate();
     document.getElementById('b_submitScoreButton').disabled = true;
     document.getElementById('h_endMessage').textContent = "Your score has been submitted!";
     document.getElementById('h_endMessage').style.color = 'lime';

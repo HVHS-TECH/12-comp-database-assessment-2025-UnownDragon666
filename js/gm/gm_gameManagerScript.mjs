@@ -19,10 +19,8 @@ const modalTitle = document.getElementById('h_modalTitle');
 const modalDescription = document.getElementById('p_modalDescription');
 const modalPlayButton = document.getElementById('b_modalPlay');
 const modalClose = document.getElementById('s_modalClose');
-
 const sidebar = document.getElementById('s_sidebar');
 const sidebarToggle = document.getElementById('b_sidebarToggle');
-
 const games = {
     'd_catchTheStarsContainer': {
         title: 'Catch the Stars',
@@ -50,10 +48,6 @@ const games = {
 // Imports
 /*******************************************************/
 import { fb_authenticate, fb_loggedIn } from '../fb/fb_io.mjs';
-
-/*******************************************************/
-// Exports
-/*******************************************************/
 
 /*******************************************************/
 // Main functionality of page
@@ -98,6 +92,6 @@ function gm_goToPage(_path) {
     if (fb_loggedIn()) {
         window.location.href = _path;
     } else {
-        fb_authenticate();
+        window.location.href = './html/gm/gmAcc_auth.html';
     }
 }
