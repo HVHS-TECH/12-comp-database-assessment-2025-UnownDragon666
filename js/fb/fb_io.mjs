@@ -74,7 +74,7 @@ function fb_authenticate() {
                 resolve(user);
             })
         }).catch((error) => {
-            console.error(error);
+            reject(error);
         });
     })
 }
@@ -93,10 +93,12 @@ function fb_updateLoginStatus() {
     return new Promise((resolve, reject) => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
-            if (user) {
+            // check if user exists in DB, if so, display greeting
+            if (fb_readRec('accounts/' + user.uid) !== null) {
                 document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
                 document.getElementById('b_login').style.display = 'none';
                 document.getElementById('b_logout').disabled = false;
+                console.log(user);
                 resolve(true);
             } else {
                 document.getElementById('p_userGreeting').textContent = 'Please log in';

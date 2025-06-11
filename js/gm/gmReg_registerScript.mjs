@@ -26,8 +26,9 @@ import {
 window.setup = () => {
     fb_initialise();
     fb_updateLoginStatus().then((userBoolean) => {
-        if (userBoolean) {
+        if (userBoolean === true) {
             fb_readRec('accounts/' + getAuth().currentUser.uid).then((data) => {
+                console.log(data);
                 if (data !== undefined) {
                     document.getElementById('p_error').innerHTML = 'You are logged in as ' + data.name + '.';
                 }
@@ -52,16 +53,6 @@ window.signup = () => {
                     window.location.href = './gmAcc_profile.html';
                 }, 3000);
             } else if (data === null) {
-                const auth = getAuth();
-                // If user doesn't have an account, create one
-                fb_writeRec('accounts/' + auth.currentUser.uid, {
-                    email: auth.currentUser.email,
-                    name: auth.currentUser.displayName,
-                    photoURL: auth.currentUser.photoURL,
-                    providerId: auth.currentUser.providerId,
-                    metadata: auth.currentUser.metadata,
-                    providerData: auth.currentUser.providerData
-                })
                 // Run form function
                 gmReg_expandForm();
             }
@@ -210,8 +201,17 @@ function gmReg_submitForm() {
     // In future, may use createUserWithEmailAndPassword to create a new user
     // and store their information using the Firebase Authentication API
     // For now, we will store their information using the Firebase Realtime Database API
+    const auth = getAuth();
+    fb_writeRec('accounts/' + auth.currentUser.uid, {
+        email: auth.currentUser.email,
+        name: auth.currentUser.displayName,
+        photoURL: auth.currentUser.photoURL,
+        providerId: auth.currentUser.providerId,
+        metadata: auth.currentUser.metadata,
+        providerData: auth.currentUser.providerData
+    })
 
-    fb_updateRec('accounts/' + getAuth().currentUser.uid, {
+    fb_updateRec('accounts/' + auth.currentUser.uid, {
         name: name,
         birthdate: birthdate,
         pronouns: pronouns,
