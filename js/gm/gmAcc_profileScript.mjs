@@ -1,8 +1,7 @@
 /*******************************************************/
 // gm_Acc_profileScript.mjs
 // Profile page script
-// Input: N/A
-// Returns: N/A
+// Written by Idrees Munshi
 /*******************************************************/
 console.log('%cgmAcc_profileScript running', 'color: blue; background-color: white;');
 
@@ -52,8 +51,8 @@ function gmAcc_displayProfile(_user) {
 }
 
 function gmAcc_displayLoginMessage() {
-  const profileContainer = document.getElementById('d_headerContainer');
-  profileContainer.innerHTML = `
+    const profileContainer = document.getElementById('d_headerContainer');
+    profileContainer.innerHTML = `
     <h1>Please log in to see profile</h1>
   `;
 }

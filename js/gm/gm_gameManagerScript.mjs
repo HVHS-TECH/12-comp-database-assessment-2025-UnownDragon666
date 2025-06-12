@@ -34,13 +34,13 @@ const games = {
     },
     'game3': {
         title: 'Game 3 Title',
-        description: 'Description of Game 3 goes here. Provide a brief overview of the game and its objectives.',
-        url: './path_to_game3.html'
+        description: 'This game may or may not be under development.',
+        url: './#'
     },
     'game4': {
         title: 'Game 4 Title',
-        description: 'Description of Game 4 goes here. Provide a brief overview of the game and its objectives.',
-        url: './path_to_game4.html'
+        description: 'This game may or may not be under development.',
+        url: './#'
     }
 };
 
