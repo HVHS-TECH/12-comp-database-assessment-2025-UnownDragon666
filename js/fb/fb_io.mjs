@@ -94,18 +94,19 @@ function fb_updateLoginStatus() {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             // check if user exists in DB, if so, display greeting
-            if (fb_readRec('accounts/' + user.uid) !== null) {
-                document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
-                document.getElementById('b_login').style.display = 'none';
-                document.getElementById('b_logout').disabled = false;
-                console.log(user);
-                resolve(true);
-            } else {
-                document.getElementById('p_userGreeting').textContent = 'Please log in';
-                document.getElementById('b_login').style.display = 'block';
-                document.getElementById('b_logout').disabled = true;
-                resolve(false);
-            }
+            fb_readRec('accounts/' + user.uid).then((data) => {
+                if (data !== null) {
+                    document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
+                    document.getElementById('b_login').style.display = 'none';
+                    document.getElementById('b_logout').disabled = false;
+                    resolve(true);
+                } else {
+                    document.getElementById('p_userGreeting').textContent = 'Please log in';
+                    document.getElementById('b_login').style.display = 'block';
+                    document.getElementById('b_logout').disabled = true;
+                    resolve(false);
+                }
+            })
         }, (error) => {
             reject(error);
         });
