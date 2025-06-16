@@ -1,1 +1,57 @@
- 
+:root {
+    --tableHeaderColor: #f5f5f5;
+    --tableBodyColor: #00000000;
+    /*Temporary colour, until I figure out a better one*/
+    --borderColor: #f5f5f5;
+}
+
+#s_leaderboardSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    overflow: auto;
+    /* Make the table body have a fixed height, and allow it to scroll vertically, instead of scrolling the entire page */
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+#t_leaderboard {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--tableBodyColor);
+}
+
+#t_leaderboard th,
+#t_leaderboard td {
+    border: 1.5px solid var(--borderColor);
+    padding: 20px;
+    text-align: left;
+    margin: auto;
+}
+
+.tableTitle {
+    font-weight: bold;
+    font-size: 3rem;
+    color: var(--tableHeaderColor);
+    margin: auto;
+}
+
+#t_leaderboard td {
+    font-size: 1.5rem;
+    color: var(--tableHeaderColor);
+}
+
+#t_leaderboard th:nth-child(1) {
+    width: 10%;
+}
+
+#t_leaderboard th:nth-child(2) {
+    width: 70%;
+}
+
+#t_leaderboard th:nth-child(3) {
+    width: 20%;
+}
