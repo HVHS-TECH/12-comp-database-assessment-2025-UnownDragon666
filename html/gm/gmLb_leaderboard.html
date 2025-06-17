@@ -2,123 +2,133 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <title>Leaderboard</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS -->
-    <link rel="stylesheet" href="../../css/gm/gm_style.css">
-    <link rel="stylesheet" href="../../css/gm/gmLb_leaderboardStyle.css">
-    <!-- Icons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<title>Leaderboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS -->
+	<link rel="stylesheet" href="../../css/gm/gm_style.css">
+	<link rel="stylesheet" href="../../css/gm/gmLb_leaderboardStyle.css">
+	<!-- Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-    <div id="d_layout">
-        <!-- Sidebar -->
-        <aside id="s_sidebar" class="collapsed">
-            <div id="d_userStatus">
-                <p id="p_userGreeting">Not logged in</p>
-                <div id="d_buttonContainer">
-                    <button id="b_login" onclick="fb_authenticate();">Sign In with Google</button>
-                    <button id="b_logout" onclick="fb_logout()" disabled>Sign Out</button>
-                </div>
-            </div>
+	<div id="d_layout">
+		<!-- Sidebar -->
+		<aside id="s_sidebar" class="collapsed">
+			<div id="d_userStatus">
+				<p id="p_userGreeting">Not logged in</p>
+				<div id="d_buttonContainer">
+					<button id="b_login" onclick="fb_authenticate();">Sign In with Google</button>
+					<button id="b_logout" onclick="fb_logout()" disabled>Sign Out</button>
+				</div>
+			</div>
 
-            <nav>
-                <ul>
-                    <li><a href="../../index.html" class="nav-tab"><i class='bx bxs-joystick icon'></i><span
-                                class="label">Game
-                                Hub</span></a></li>
-                    <li><a href="./gmAcc_profile.html" class="nav-tab"><i class='bx bxs-user icon'></i><span
-                                class="label">Profile</span></a></li>
-                    <li><a href="#" class="nav-tab active"><i class='bx bxs-trophy icon'></i><span
-                                class="label">Leaderboard</span></a></li>
-                </ul>
-            </nav>
-        </aside>
+			<nav>
+				<ul>
+					<li><a href="../../index.html" class="nav-tab"><i class='bx bxs-joystick icon'></i><span
+								class="label">Game
+								Hub</span></a></li>
+					<li><a href="./gmAcc_profile.html" class="nav-tab"><i class='bx bxs-user icon'></i><span
+								class="label">Profile</span></a></li>
+					<li><a href="#" class="nav-tab active"><i class='bx bxs-trophy icon'></i><span
+								class="label">Leaderboard</span></a></li>
+				</ul>
+			</nav>
+		</aside>
 
-        <!-- Main Content -->
-        <main>
-            <button id="b_sidebarToggle">
-                <i class='bx bx-menu'></i>
-            </button>
-            <header>
-                <h1 id="h_leaderboardTitle">Leaderboards</h1>
-            </header>
+		<!-- Main Content -->
+		<main>
+			<button id="b_sidebarToggle">
+				<i class='bx bx-menu'></i>
+			</button>
+			<header>
+				<h1 id="h_leaderboardTitle">Leaderboards</h1>
+				<label id="l_lbchooseLabel" for="s_chooseLeaderboard">Select which Leaderboard to
+					view</label>
+				<select id="s_chooseLeaderboard" name="s_chooseLeaderboard" required>
+					<option value="novice" selected>Novice</option>
+					<option value="apprentice">Apprentice</option>
+					<option value="expert">Expert</option>
+					<option value="master">Master</option>
+					<option value="divine">Divine</option>
+					<option value="gts">Game that works</option>
+				</select>
+			</header>
 
-            <section id="s_leaderboardSection">
-                <table id="t_leaderboard">
-                    <thead>
-                        <tr>
-                            <th class="tableTitle" id="th_rank">Rank</th>
-                            <th class="tableTitle" id="th_name">Name</th>
-                            <th class="tableTitle" id="th_score">Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John "The King" Doe</td>
-                            <td>1234</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane "The Ace" Smith</td>
-                            <td>1123</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Bob "The Pro" Johnson</td>
-                            <td>1056</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Alice "The Whiz" Brown</td>
-                            <td>987</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Mike "The Master" Davis</td>
-                            <td>876</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Emily "The Star" Chen</td>
-                            <td>765</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>David "The Guru" Lee</td>
-                            <td>654</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Sarah "The Rockstar" Kim</td>
-                            <td>543</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Kevin "The Legend" White</td>
-                            <td>432</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Olivia "The Champion" Martin</td>
-                            <td>321</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
+			<section id="s_leaderboardSection">
+				<table id="t_leaderboard">
+					<thead>
+						<tr>
+							<th class="tableTitle" id="th_rank">Rank</th>
+							<th class="tableTitle" id="th_name">Name</th>
+							<th class="tableTitle" id="th_score">Score</th>
+						</tr>
+					</thead>
+					<tbody id="tbody_leaderboard">
+						<tr>
+							<td>1</td>
+							<td>John "The King" Doe</td>
+							<td>1234</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jane "The Ace" Smith</td>
+							<td>1123</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Bob "The Pro" Johnson</td>
+							<td>1056</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Alice "The Whiz" Brown</td>
+							<td>987</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Mike "The Master" Davis</td>
+							<td>876</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Emily "The Star" Chen</td>
+							<td>765</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>David "The Guru" Lee</td>
+							<td>654</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>Sarah "The Rockstar" Kim</td>
+							<td>543</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Kevin "The Legend" White</td>
+							<td>432</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>Olivia "The Champion" Martin</td>
+							<td>321</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
 
-        <footer>
+		<footer>
 
-        </footer>
-    </div>
-    <!-- JS -->
-    <script type="module" src="../../js/fb/main.mjs"></script>
-    <script type="module" src="../../js/gm/gm_main.mjs"></script>
-    <script type="module" src="../../js/gm/gmLb_leaderboardScript.mjs"></script>
+		</footer>
+	</div>
+	<!-- JS -->
+	<script type="module" src="../../js/fb/main.mjs"></script>
+	<script type="module" src="../../js/gm/gm_main.mjs"></script>
+	<script type="module" src="../../js/gm/gmLb_leaderboardScript.mjs"></script>
 </body>
 
 </html>

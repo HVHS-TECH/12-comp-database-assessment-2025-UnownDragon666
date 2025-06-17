@@ -5,6 +5,20 @@
     --borderColor: #f5f5f5;
 }
 
+#l_lbchooseLabel {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--tableHeaderColor);
+    margin: auto;
+}
+
+#s_chooseLeaderboard,
+#s_chooseLeaderboard option {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--modalBg);
+}
+
 #s_leaderboardSection {
     display: flex;
     flex-direction: column;

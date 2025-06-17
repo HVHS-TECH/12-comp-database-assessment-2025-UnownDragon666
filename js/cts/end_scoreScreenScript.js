@@ -10,7 +10,8 @@ console.log('%cend_scoreScreenScript.js running', 'color:blue; background-color:
 // Imports
 /*******************************************************/
 import {
-    fb_initialise, fb_authenticate, fb_writeRec, getAuth
+    fb_initialise, fb_authenticate, fb_writeRec, getAuth,
+    fb_readRec
 } from '../fb/fb_io.mjs';
 
 fb_initialise();
@@ -148,6 +149,16 @@ function end_submitscore() {
     }
 
     auth != null ? fb_writeRec(`cts/${DIFF}/scores/${auth.currentUser.uid}`, SCORE) : fb_authenticate();
+    // Check if user's new score is higher than their highscore
+    fb_readRec(`highscores/cts/${DIFF}/${auth.currentUser.uid}`).then((data) => {
+        if (data === null) {
+            fb_writeRec(`highscores/cts/${DIFF}/${auth.currentUser.uid}`, SCORE);
+        } else if (SCORE > data) {
+            fb_writeRec(`highscores/cts/${DIFF}/${auth.currentUser.uid}`, SCORE);
+        } else {
+            // Do nothing
+        }
+    })
     document.getElementById('b_submitScoreButton').disabled = true;
     document.getElementById('h_endMessage').textContent = "Your score has been submitted!";
     document.getElementById('h_endMessage').style.color = 'lime';

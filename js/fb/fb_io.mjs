@@ -11,7 +11,7 @@ console.log('%cfb_io.mjs running',
 // Variables
 
 // Imports
-import { getDatabase, ref, set, get, update } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+import { getDatabase, ref, set, get, update, query, limitToFirst, orderByChild } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
@@ -182,6 +182,21 @@ function fb_readRec(_path) {
     }).catch((error) => {
         console.error(error);
     })
+}
+
+/*******************************************************/
+// fb_query
+// Query Firebase
+// Called in gmLb_leaderboard.html
+// Input: _path as a string (path to query), _limit as an integer (number of records to return)
+// Returns: snapshot.val() which is an object containing the data read
+/*******************************************************/
+function fb_query(_path, _limit) {
+    console.log('%c fb_query(): ',
+        'color: ' + COL_C + '; background-color: ' + COL_B + ';');
+
+    const DB = getDatabase();
+    const REF = query(ref(DB, _path), limitToFirst(_limit), orderByChild('score'));
 }
 
 /*******************************************************/
