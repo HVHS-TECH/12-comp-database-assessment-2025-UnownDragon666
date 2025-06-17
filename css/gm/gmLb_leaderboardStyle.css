@@ -14,8 +14,9 @@
     margin: auto;
     overflow: auto;
     /* Make the table body have a fixed height, and allow it to scroll vertically, instead of scrolling the entire page */
-    height: 50vh;
-    overflow-y: scroll;
+    height: 60vh;
+    overflow-y: auto;
+    padding-top: 15rem;
 }
 
 #t_leaderboard {
