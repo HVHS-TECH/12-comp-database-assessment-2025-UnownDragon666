@@ -19,7 +19,8 @@ import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChang
 export {
     fb_initialise, fb_authenticate, fb_readRec, fb_writeRec,
     fb_logout, fb_loggedIn, getAuth, fb_updateLoginStatus,
-    fb_profileAuthState, fb_updateRec, serverTimestamp, fb_query
+    fb_profileAuthState, fb_updateRec, serverTimestamp, fb_query,
+    fb_leaderboardAuthState
 }
 
 /*******************************************************/
@@ -132,6 +133,25 @@ function fb_profileAuthState() {
     })
 }
 
+
+/*******************************************************/
+// fb_leaderboardAuthState()
+// Check if user is logged in
+// Called in gmLb_leaderboard.html
+// Input: N/A
+// Returns: N/A
+/*******************************************************/
+function fb_leaderboardAuthState(_game, _diff) {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            window.fetchLB(_game, _diff);
+        } else {
+            window.loginMessage();
+        }
+    })
+}
+
 /*******************************************************/
 // fb_logout()
 // Log out of Firebase
@@ -198,10 +218,12 @@ function fb_query(_path, _limit) {
 
     const DB = getDatabase();
     const REF = query(ref(DB, _path), orderByChild('score'), limitToLast(_limit));
-    return get(REF).then((snapshot) => {
-        return snapshot.val();
-    }).catch((error) => {
-        console.error(error);
+    return new Promise((resolve, reject) => {
+        get(REF).then((snapshot) => {
+            resolve(snapshot.val());
+        }).catch((error) => {
+            reject(error);
+        })
     })
 }
 

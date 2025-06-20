@@ -14,13 +14,13 @@ let currentGame = "cts";
 /*******************************************************/
 // Constants
 /*******************************************************/
-const LEADERBOARD = document.getElementById('leaderboard');
+const LEADERBOARD = document.getElementById('tbody_leaderboard');
 const LBSELECT = document.getElementById('s_chooseLeaderboard');
 
 /*******************************************************/
 // Imports 
 /*******************************************************/
-import { fb_query } from '../fb/fb_io.mjs';
+import { fb_initialise, fb_query, fb_updateLoginStatus, fb_readRec, fb_leaderboardAuthState } from '../fb/fb_io.mjs';
 
 /*******************************************************/
 // Main functionality of page    
@@ -28,11 +28,19 @@ import { fb_query } from '../fb/fb_io.mjs';
 // Check which leaderboard to diplay through select option on the page
 LBSELECT.addEventListener('change', () => {
     currentLeaderboard = LBSELECT.value;
+    if (currentLeaderboard == "gts") {
+        currentGame = "gts";
+    } else {
+        currentGame = "cts";
+    }
+    gmLb_fetchLeaderboard(currentGame, currentLeaderboard);
 })
 
-// Fetch relevant leaderboard data
-gmLb_fetchLeaderboard(currentLeaderboard);
+// Initialise firebase
+fb_initialise();
 
+// Fetch relevant leaderboard data if the user is logged in, else display message
+fb_leaderboardAuthState(currentGame, currentLeaderboard);
 /*******************************************************/
 // gmLb_fetchLeaderboard()
 // Fetch leaderboard data  from firebase
@@ -41,11 +49,54 @@ gmLb_fetchLeaderboard(currentLeaderboard);
 // Returns: N/A
 /*******************************************************/
 function gmLb_fetchLeaderboard(_game, _diff) {
-    const LEADERBOARD_DATA = fb_query(`highscores/games/${_game}/difficulties/${_diff},/scores`, 20);
-    // Console log for development purposes
-    console.log(LEADERBOARD_DATA);
+    fb_query(`highscores/games/${_game}/difficulties/${_diff}/scores`, 20).then((snapshot) => {
+        gmLb_displayLeaderboard(snapshot);
+    });
+}
 
-    // LEADERBOARD_DATA.then((snapshot) => {
-    //     gmLb_displayLeaderboard(snapshot);
-    // });
+window.fetchLB = gmLb_fetchLeaderboard;
+/*******************************************************/
+// gmLb_displayLoginMessage()
+// Display message on leaderboard if user is not logged in
+// Input: N/A
+// Returns: N/A
+/*******************************************************/
+function gmLb_displayLoginMessage() {
+    LEADERBOARD.innerHTML = '<tr><td colspan="3">Login to view leaderboard</td></tr>';
+}
+window.loginMessage = gmLb_displayLoginMessage;
+
+/*******************************************************/
+// gmLb_displayLeaderboard()
+// Display leaderboard data on page
+// Input: _data as an object (data to display)
+// Returns: N/A
+/*******************************************************/
+async function gmLb_displayLeaderboard(_data) {
+
+    // Clear leaderboard
+    LEADERBOARD.innerHTML = '';
+
+    _data = Object.entries(_data).map(([key, value]) => {
+        return {
+            uid: key,
+            scoreObj: value
+        }
+    });
+
+    _data.sort((a, b) => b.scoreObj.score - a.scoreObj.score);
+
+    console.log(_data);
+
+    // Add data to leaderboard
+    for (let i = 0; i < _data.length; i++) {
+        // Score is stored in an object
+        let score = _data[i].scoreObj.score;
+        // Since scores are stored with uids, find the name of the user with their uid
+        let name;
+        name = await fb_readRec(`accounts/${_data[i].uid}/name`)
+        let row = document.createElement('tr');
+        row.innerHTML = `<td>${i + 1}</td><td>${name}</td><td>${score}</td>`;
+        LEADERBOARD.appendChild(row);
+    }
 }
