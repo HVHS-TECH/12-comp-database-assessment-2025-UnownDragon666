@@ -19,7 +19,7 @@ import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChang
 export {
     fb_initialise, fb_authenticate, fb_readRec, fb_writeRec,
     fb_logout, fb_loggedIn, getAuth, fb_updateLoginStatus,
-    fb_profileAuthState, fb_updateRec, ref, serverTimestamp
+    fb_profileAuthState, fb_updateRec, serverTimestamp
 }
 
 /*******************************************************/

@@ -11,7 +11,7 @@ console.log('%cend_scoreScreenScript.js running', 'color:blue; background-color:
 /*******************************************************/
 import {
     fb_initialise, fb_authenticate, fb_writeRec, getAuth,
-    fb_readRec, ref, serverTimestamp
+    fb_readRec, serverTimestamp
 } from '../fb/fb_io.mjs';
 
 const fb = fb_initialise();
