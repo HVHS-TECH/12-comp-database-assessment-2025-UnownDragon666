@@ -5,21 +5,33 @@
             ".write": false
         },
         "accounts": {
-            ".read": "auth != null",
-            ".indexOn": [
-                "name",
-                "favoriteFruit"
-            ],
             "$uid": {
-                ".write": "$uid === auth.uid || true === root.child('admins').hasChild(auth.uid)",
+                ".read": "auth.uid === $uid",
+                ".write": "auth.uid === $uid",
                 "name": {
-                    ".read": true
+                    ".read": "auth != null"
                 },
-                "email": {
-                    ".read": "auth.uid === $uid"
+                "pronouns": {
+                    ".read": "auth != null"
                 }
             },
-            ".write": false
+            ".read": "true === root.child('admins').hasChild(auth.uid)",
+            ".write": "true === root.child('admins').hasChild(auth.uid)"
+        },
+        "highscores": {
+            "$game": {
+                "$diff": {
+                    "$uid": {
+                        ".read": "auth != null",
+                        ".write": "auth.uid === $uid",
+                        ".indexOn": [
+                            ".value"
+                        ]
+                    }
+                }
+            },
+            ".read": "true === root.child('admins').hasChild(auth.uid)",
+            ".write": "true === root.child('admins').hasChild(auth.uid)"
         },
         "users": {
             ".read": "auth != null",

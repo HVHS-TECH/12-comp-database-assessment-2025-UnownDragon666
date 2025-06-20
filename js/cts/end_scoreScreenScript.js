@@ -11,10 +11,10 @@ console.log('%cend_scoreScreenScript.js running', 'color:blue; background-color:
 /*******************************************************/
 import {
     fb_initialise, fb_authenticate, fb_writeRec, getAuth,
-    fb_readRec
+    fb_readRec, ref, serverTimestamp
 } from '../fb/fb_io.mjs';
 
-fb_initialise();
+const fb = fb_initialise();
 /*******************************************************/
 // Constants
 /*******************************************************/
@@ -148,17 +148,26 @@ function end_submitscore() {
         return;
     }
 
-    auth != null ? fb_writeRec(`cts/${DIFF}/scores/${auth.currentUser.uid}`, SCORE) : fb_authenticate();
+    const timestamp = serverTimestamp();
+    const highScoreData = {
+        score: SCORE,
+        timestamp: timestamp
+    };
+
+    const path = `highscores/games/cts/difficulties/${DIFF}/scores/${auth.currentUser.uid}`;
+
+    auth != null ? fb_writeRec(`cts/difficulties/${DIFF}/scores/${auth.currentUser.uid}`, { score: SCORE, timestamp: timestamp }) : fb_authenticate();
+
     // Check if user's new score is higher than their highscore
-    fb_readRec(`highscores/cts/${DIFF}/${auth.currentUser.uid}`).then((data) => {
-        if (data === null) {
-            fb_writeRec(`highscores/cts/${DIFF}/${auth.currentUser.uid}`, SCORE);
-        } else if (SCORE > data) {
-            fb_writeRec(`highscores/cts/${DIFF}/${auth.currentUser.uid}`, SCORE);
+    fb_readRec(path).then((data) => {
+        if (data === null || SCORE > data.score) {
+            fb_writeRec(path, highScoreData);
+            console.log("New high score submitted!");
         } else {
-            // Do nothing
+            console.log("No new high score submitted.");
         }
     })
+
     document.getElementById('b_submitScoreButton').disabled = true;
     document.getElementById('h_endMessage').textContent = "Your score has been submitted!";
     document.getElementById('h_endMessage').style.color = 'lime';

@@ -1,0 +1,436 @@
+{
+    "accounts": {
+        "40lt1L7aJXXAwh1fDGaEa64yP4S2": {
+            "birthdate": "2008-07-22",
+            "email": "unown.idrees@gmail.com",
+            "metadata": {
+                "createdAt": "1746161766725",
+                "creationTime": "Fri, 02 May 2025 04:56:06 GMT",
+                "lastLoginAt": "1749463325221",
+                "lastSignInTime": "Mon, 09 Jun 2025 10:02:05 GMT"
+            },
+            "name": "Idrees",
+            "password": "Cream",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJU_Z16xxagt_zIf0dangVI5uZ5Et0Be0mR2oEy_6Swb0Vpnr2P=s96-c",
+            "pronouns": "He/him",
+            "providerData": [
+                {
+                    "displayName": "Idrees Munshi",
+                    "email": "unown.idrees@gmail.com",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJU_Z16xxagt_zIf0dangVI5uZ5Et0Be0mR2oEy_6Swb0Vpnr2P=s96-c",
+                    "providerId": "google.com",
+                    "uid": "108885459797126338460"
+                }
+            ],
+            "providerId": "firebase"
+        },
+        "CuJNgsfGsZbQ1pfkGYQ0CzAE2Tf1": {
+            "birthdate": "2909-02-09",
+            "email": "22069sb@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1749676554250",
+                "creationTime": "Wed, 11 Jun 2025 21:15:54 GMT",
+                "lastLoginAt": "1749676554250",
+                "lastSignInTime": "Wed, 11 Jun 2025 21:15:54 GMT"
+            },
+            "name": "sgtfs",
+            "password": "asdf",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKgFP1hHLZz0sdA6AYgDGFQ89yTqy74GJEbqQ-CtyK-v18tWw=s96-c",
+            "pronouns": "Mr/Misters",
+            "providerData": [
+                {
+                    "displayName": "Scott Barlow",
+                    "email": "22069sb@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKgFP1hHLZz0sdA6AYgDGFQ89yTqy74GJEbqQ-CtyK-v18tWw=s96-c",
+                    "providerId": "google.com",
+                    "uid": "113546362145026568892"
+                }
+            ],
+            "providerId": "firebase"
+        },
+        "RotPtHmvkQNOlI6rDQ75PTVBsJ02": {
+            "birthdate": "2009-02-12",
+            "email": "22250ae@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1749676186560",
+                "creationTime": "Wed, 11 Jun 2025 21:09:46 GMT",
+                "lastLoginAt": "1749676186561",
+                "lastSignInTime": "Wed, 11 Jun 2025 21:09:46 GMT"
+            },
+            "name": "asf",
+            "password": "1234",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLg3TcSMwo4OYfMQOeBhUY4qxoPYUjwxfBnIUvSPKb6-8k0ojPO=s96-c",
+            "pronouns": "",
+            "providerData": [
+                {
+                    "displayName": "Anthony Elliott",
+                    "email": "22250ae@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLg3TcSMwo4OYfMQOeBhUY4qxoPYUjwxfBnIUvSPKb6-8k0ojPO=s96-c",
+                    "providerId": "google.com",
+                    "uid": "103525860158535757228"
+                }
+            ],
+            "providerId": "firebase"
+        },
+        "UeWx63LlG4cny02wreoe8m7EF9x1": {
+            "email": "22026cl@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1749518541796",
+                "creationTime": "Tue, 10 Jun 2025 01:22:21 GMT",
+                "lastLoginAt": "1749518541797",
+                "lastSignInTime": "Tue, 10 Jun 2025 01:22:21 GMT"
+            },
+            "name": "Caleb Lowe",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKJTN2UQbGGr3bNKmUHO_XXk01fkgLiRgNj3QTCrAyEUBIJMpYP=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Caleb Lowe",
+                    "email": "22026cl@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKJTN2UQbGGr3bNKmUHO_XXk01fkgLiRgNj3QTCrAyEUBIJMpYP=s96-c",
+                    "providerId": "google.com",
+                    "uid": "111843741219757727745"
+                }
+            ],
+            "providerId": "firebase"
+        },
+        "nvBZwZdH8KYLmphPH43FtFAUVUx2": {
+            "birthdate": "3333-03-22",
+            "email": "22338im@gmail.com",
+            "metadata": {
+                "createdAt": "1746162899340",
+                "creationTime": "Fri, 02 May 2025 05:14:59 GMT",
+                "lastLoginAt": "1749516602206",
+                "lastSignInTime": "Tue, 10 Jun 2025 00:50:02 GMT"
+            },
+            "name": "Bob",
+            "password": "23",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIrsONWO09XClj7xfrb7Vna1tlPdtuGJ4Uoz_p_-Yr49czYaQ=s96-c",
+            "pronouns": "32323",
+            "providerData": [
+                {
+                    "displayName": "Mr Bob",
+                    "email": "22338im@gmail.com",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIrsONWO09XClj7xfrb7Vna1tlPdtuGJ4Uoz_p_-Yr49czYaQ=s96-c",
+                    "providerId": "google.com",
+                    "uid": "100234473437313727891"
+                }
+            ],
+            "providerId": "firebase"
+        },
+        "urLQpvP5FRgju4oNSWeAta4SmXx1": {
+            "birthdate": "2008-07-22",
+            "email": "22338im@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1746140449678",
+                "creationTime": "Thu, 01 May 2025 23:00:49 GMT",
+                "lastLoginAt": "1749766705190",
+                "lastSignInTime": "Thu, 12 Jun 2025 22:18:25 GMT"
+            },
+            "name": "Idrees",
+            "password": "Hey",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocILda_u5KnbRdUT35ZH2acdXzbhiGqdlOekAPLxXl9y10fhiAU=s96-c",
+            "pronouns": "He/him",
+            "providerData": [
+                {
+                    "displayName": "Idrees Munshi",
+                    "email": "22338im@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocILda_u5KnbRdUT35ZH2acdXzbhiGqdlOekAPLxXl9y10fhiAU=s96-c",
+                    "providerId": "google.com",
+                    "uid": "114138183732024304168"
+                }
+            ],
+            "providerId": "firebase"
+        },
+        "vRG1q5AAhhOZISuP4fCxfLX0E1P2": {
+            "birthdate": "2008-07-18",
+            "email": "22115ms@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1750123102388",
+                "creationTime": "Tue, 17 Jun 2025 01:18:22 GMT",
+                "lastLoginAt": "1750123102388",
+                "lastSignInTime": "Tue, 17 Jun 2025 01:18:22 GMT"
+            },
+            "name": "I Think You Know Me",
+            "password": "itisi",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLQg0VCteJH75vX8CmkWPOXvsWlIk905sIj-r6znOqGxb7UoOqk=s96-c",
+            "pronouns": "Waxed/Lightly/Weathered/Cut/Copper/Stair",
+            "providerData": [
+                {
+                    "displayName": "Mac Smith",
+                    "email": "22115ms@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLQg0VCteJH75vX8CmkWPOXvsWlIk905sIj-r6znOqGxb7UoOqk=s96-c",
+                    "providerId": "google.com",
+                    "uid": "118014738506580247758"
+                }
+            ],
+            "providerId": "firebase"
+        }
+    },
+    "admins": {
+        "nvBZwZdH8KYLmphPH43FtFAUVUx2": true
+    },
+    "cts": {
+        "apprentice": {
+            "scores": {
+                "nvBZwZdH8KYLmphPH43FtFAUVUx2": 27
+            }
+        }
+    },
+    "numbers": {
+        "greetings": "how are you today"
+    },
+    "rand": {
+        "randNum": 0.42575203495136893
+    },
+    "salsStrawberrySaloon": {
+        "users": {
+            "ClDxcbQ9hac5oCDPu0n0tn7dc8w1": {
+                "age": 9000,
+                "favoriteFruit": "APPLE",
+                "fruitQuantity": 12,
+                "gender": "female",
+                "name": "Carmen Sandeigo ",
+                "updatePermissiom": true
+            },
+            "K2jtttvXINZUNo3rSVZ4jZQxeJB3": {
+                "age": 17,
+                "favoriteFruit": "pineapple",
+                "fruitQuantity": 6,
+                "gender": "female",
+                "name": "Kyla",
+                "updatePermissiom": true
+            },
+            "X2W16nhA34ahoP0RseqIMHYAMeE3": {
+                "age": 2,
+                "favoriteFruit": "678906545678",
+                "fruitQuantity": 9.545678976567898e+22,
+                "gender": "male",
+                "name": "hi",
+                "updatePermissiom": true
+            },
+            "dBlViCkrG0WDnZdkaTv6Jj4hGak1": {
+                "age": 99,
+                "favoriteFruit": "kiwana",
+                "fruitQuantity": 93,
+                "gender": "male",
+                "name": "Mr Inedible",
+                "updatePermissiom": true
+            },
+            "nvBZwZdH8KYLmphPH43FtFAUVUx2": {
+                "age": 16,
+                "favoriteFruit": "mango",
+                "fruitQuantity": 18,
+                "gender": "male",
+                "name": "Bob",
+                "updatePermissiom": true
+            },
+            "urLQpvP5FRgju4oNSWeAta4SmXx1": {
+                "age": 16,
+                "favoriteFruit": "man go",
+                "fruitQuantity": 1,
+                "gender": "male",
+                "name": "Idrees",
+                "updatePermissiom": false
+            }
+        }
+    },
+    "scores": {
+        "divine": {
+            "Idrees Munshi": 50
+        }
+    },
+    "users": {
+        "40lt1L7aJXXAwh1fDGaEa64yP4S2": {
+            "email": "unown.idrees@gmail.com",
+            "name": "Idrees Munshi",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJU_Z16xxagt_zIf0dangVI5uZ5Et0Be0mR2oEy_6Swb0Vpnr2P=s96-c",
+            "username": "Idrees Munshi"
+        },
+        "BqzH5dm7EOevgLtSdCG2MVFeQbq2": {
+            "email": "22309co@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1747098608751",
+                "creationTime": "Tue, 13 May 2025 01:10:08 GMT",
+                "lastLoginAt": "1747098608751",
+                "lastSignInTime": "Tue, 13 May 2025 01:10:08 GMT"
+            },
+            "name": "Carmen O'Grady",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJz_mjkc_Fy1JxDNY1Olv04ZpEnYKg0Ry1tNMhhRYA84vVPhJOt=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Carmen O'Grady",
+                    "email": "22309co@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJz_mjkc_Fy1JxDNY1Olv04ZpEnYKg0Ry1tNMhhRYA84vVPhJOt=s96-c",
+                    "providerId": "google.com",
+                    "uid": "103242652036859989055"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "BqzH5dm7EOevgLtSdCG2MVFeQbq2"
+        },
+        "DUyHJGbpLcMqmzYCpLWnSnspHOo2": {
+            "email": "22091wk@hvhs.school.nz",
+            "name": "William Kan",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLQkSC1ZySxKbpUkyym3Qkh8wQyL1JbmoN1I9ykka5Y8G5Xpo8=s96-c",
+            "username": "William Kan"
+        },
+        "GdQan5212Rhm9TcMxfYR7Il1tBK2": {
+            "email": "22116wl@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1747099327276",
+                "creationTime": "Tue, 13 May 2025 01:22:07 GMT",
+                "lastLoginAt": "1747099327276",
+                "lastSignInTime": "Tue, 13 May 2025 01:22:07 GMT"
+            },
+            "name": "Wilfred Leicester",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLJoGUuVEZ3_Ec1ji1IKBRZ0euDzbTHR1Ue4irv2jkxvOtXJ48=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Wilfred Leicester",
+                    "email": "22116wl@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLJoGUuVEZ3_Ec1ji1IKBRZ0euDzbTHR1Ue4irv2jkxvOtXJ48=s96-c",
+                    "providerId": "google.com",
+                    "uid": "102232177523295988674"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "GdQan5212Rhm9TcMxfYR7Il1tBK2"
+        },
+        "NrqBKm7KiXSXTxR9hKCqLx7PnT23": {
+            "age": 22,
+            "email": "22130mb@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1747097377880",
+                "creationTime": "Tue, 13 May 2025 00:49:37 GMT",
+                "lastLoginAt": "1747097377880",
+                "lastSignInTime": "Tue, 13 May 2025 00:49:37 GMT"
+            },
+            "name": "Max Bergman",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKeAg8Sr-o62acu2TG_j6T2AHjOcDqz0Vo3rHL4ZZin_HxG6OE=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Max Bergman",
+                    "email": "22130mb@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocKeAg8Sr-o62acu2TG_j6T2AHjOcDqz0Vo3rHL4ZZin_HxG6OE=s96-c",
+                    "providerId": "google.com",
+                    "uid": "112280047669690308735"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "NrqBKm7KiXSXTxR9hKCqLx7PnT23"
+        },
+        "X2W16nhA34ahoP0RseqIMHYAMeE3": {
+            "age": 22,
+            "email": "squawkykaka@gmail.com",
+            "metadata": {
+                "createdAt": "1746404472271",
+                "creationTime": "Mon, 05 May 2025 00:21:12 GMT",
+                "lastLoginAt": "1746404472271",
+                "lastSignInTime": "Mon, 05 May 2025 00:21:12 GMT"
+            },
+            "name": "George Leask",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJMJc8l5MvQHlA9tXOwyOZHjfdBRgxkv1kOMrPQxScWI6g6_rdu=s96-c",
+            "providerData": [
+                {
+                    "displayName": "George Leask",
+                    "email": "squawkykaka@gmail.com",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJMJc8l5MvQHlA9tXOwyOZHjfdBRgxkv1kOMrPQxScWI6g6_rdu=s96-c",
+                    "providerId": "google.com",
+                    "uid": "101415909569134910486"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "X2W16nhA34ahoP0RseqIMHYAMeE3"
+        },
+        "emLtBKIYXYaR9LI8pzN7KdpFflB3": {
+            "age": 22,
+            "email": "23437jh@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1747097341915",
+                "creationTime": "Tue, 13 May 2025 00:49:01 GMT",
+                "lastLoginAt": "1747097341915",
+                "lastSignInTime": "Tue, 13 May 2025 00:49:01 GMT"
+            },
+            "name": "Joseph Hijazeen",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLxn198rtPBoYBpXLWzel2_523j8jmNE899eIA0q-OB8dTOug=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Joseph Hijazeen",
+                    "email": "23437jh@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocLxn198rtPBoYBpXLWzel2_523j8jmNE899eIA0q-OB8dTOug=s96-c",
+                    "providerId": "google.com",
+                    "uid": "101102403407025852113"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "emLtBKIYXYaR9LI8pzN7KdpFflB3"
+        },
+        "f36LsvHMZSZnxTPfh97mdJomzEA3": {
+            "age": 22,
+            "email": "22278rp@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1746745097615",
+                "creationTime": "Thu, 08 May 2025 22:58:17 GMT",
+                "lastLoginAt": "1746745097615",
+                "lastSignInTime": "Thu, 08 May 2025 22:58:17 GMT"
+            },
+            "name": "Ryan Parks",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJtHHD420r0HVR1RLylgtg-rvcf-evOqDgHM97sqpgfWeePaSow=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Ryan Parks",
+                    "email": "22278rp@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJtHHD420r0HVR1RLylgtg-rvcf-evOqDgHM97sqpgfWeePaSow=s96-c",
+                    "providerId": "google.com",
+                    "uid": "102012644867538396154"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "f36LsvHMZSZnxTPfh97mdJomzEA3"
+        },
+        "nvBZwZdH8KYLmphPH43FtFAUVUx2": {
+            "email": "22338im@gmail.com",
+            "metadata": {
+                "createdAt": "1746162899340",
+                "creationTime": "Fri, 02 May 2025 05:14:59 GMT",
+                "lastLoginAt": "1746795012358",
+                "lastSignInTime": "Fri, 09 May 2025 12:50:12 GMT"
+            },
+            "name": "Mr Bob",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIrsONWO09XClj7xfrb7Vna1tlPdtuGJ4Uoz_p_-Yr49czYaQ=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Mr Bob",
+                    "email": "22338im@gmail.com",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocIrsONWO09XClj7xfrb7Vna1tlPdtuGJ4Uoz_p_-Yr49czYaQ=s96-c",
+                    "providerId": "google.com",
+                    "uid": "100234473437313727891"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "nvBZwZdH8KYLmphPH43FtFAUVUx2"
+        },
+        "urLQpvP5FRgju4oNSWeAta4SmXx1": {
+            "email": "22338im@hvhs.school.nz",
+            "metadata": {
+                "createdAt": "1746140449678",
+                "creationTime": "Thu, 01 May 2025 23:00:49 GMT",
+                "lastLoginAt": "1746492461072",
+                "lastSignInTime": "Tue, 06 May 2025 00:47:41 GMT"
+            },
+            "name": "Idrees Munshi",
+            "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocILda_u5KnbRdUT35ZH2acdXzbhiGqdlOekAPLxXl9y10fhiAU=s96-c",
+            "providerData": [
+                {
+                    "displayName": "Idrees Munshi",
+                    "email": "22338im@hvhs.school.nz",
+                    "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocILda_u5KnbRdUT35ZH2acdXzbhiGqdlOekAPLxXl9y10fhiAU=s96-c",
+                    "providerId": "google.com",
+                    "uid": "114138183732024304168"
+                }
+            ],
+            "providerId": "firebase",
+            "uid": "urLQpvP5FRgju4oNSWeAta4SmXx1"
+        }
+    }
+}

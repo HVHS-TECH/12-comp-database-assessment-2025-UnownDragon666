@@ -12,6 +12,7 @@
     margin: auto;
 }
 
+
 #s_chooseLeaderboard,
 #s_chooseLeaderboard option {
     font-weight: bold;
@@ -30,7 +31,7 @@
     /* Make the table body have a fixed height, and allow it to scroll vertically, instead of scrolling the entire page */
     height: 60vh;
     overflow-y: auto;
-    padding-top: 15rem;
+    padding-top: 400px;
 }
 
 #t_leaderboard {

@@ -9,6 +9,7 @@ console.log('%cgmLb_leaderboardScript running', 'color: blue; background-color: 
 // Variables
 /*******************************************************/
 let currentLeaderboard = "novice";
+let currentGame = "cts";
 
 /*******************************************************/
 // Constants
@@ -35,9 +36,15 @@ gmLb_fetchLeaderboard(currentLeaderboard);
 /*******************************************************/
 // gmLb_fetchLeaderboard()
 // Fetch leaderboard data  from firebase
-// Input: _leaderboard as a string (leaderboard to fetch)
+// Input: _leaderboard as a string (leaderboard to fetch), _game as a string (game to fetch leaderboard for)
 // Returns: N/A
 /*******************************************************/
-function gmLb_fetchLeaderboard(_leaderboard) {
+function gmLb_fetchLeaderboard(_game, _leaderboard) {
+    const LEADERBOARD_DATA = fb_query(`${_game}/${_leaderboard}`, 50);
+    // Console log for development purposes
+    console.log(LEADERBOARD_DATA);
 
+    // LEADERBOARD_DATA.then((snapshot) => {
+    //     gmLb_displayLeaderboard(snapshot);
+    // });
 }
