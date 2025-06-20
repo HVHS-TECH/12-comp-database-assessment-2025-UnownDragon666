@@ -170,9 +170,30 @@
         "nvBZwZdH8KYLmphPH43FtFAUVUx2": true
     },
     "cts": {
-        "apprentice": {
-            "scores": {
-                "nvBZwZdH8KYLmphPH43FtFAUVUx2": 27
+        "difficulties": {
+            "expert": {
+                "scores": {
+                    "nvBZwZdH8KYLmphPH43FtFAUVUx2": {
+                        "score": 50,
+                        "timestamp": 1750399437574
+                    }
+                }
+            }
+        }
+    },
+    "highscores": {
+        "games": {
+            "cts": {
+                "difficulties": {
+                    "expert": {
+                        "scores": {
+                            "nvBZwZdH8KYLmphPH43FtFAUVUx2": {
+                                "score": 50,
+                                "timestamp": 1750398744946
+                            }
+                        }
+                    }
+                }
             }
         }
     },

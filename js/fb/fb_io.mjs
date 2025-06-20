@@ -11,7 +11,7 @@ console.log('%cfb_io.mjs running',
 // Variables
 
 // Imports
-import { getDatabase, ref, set, get, update, query, limitToFirst, orderByValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+import { getDatabase, ref, set, get, update, query, limitToLast, orderByChild, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
@@ -19,7 +19,7 @@ import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChang
 export {
     fb_initialise, fb_authenticate, fb_readRec, fb_writeRec,
     fb_logout, fb_loggedIn, getAuth, fb_updateLoginStatus,
-    fb_profileAuthState, fb_updateRec, serverTimestamp
+    fb_profileAuthState, fb_updateRec, serverTimestamp, fb_query
 }
 
 /*******************************************************/
@@ -197,7 +197,7 @@ function fb_query(_path, _limit) {
         'color: ' + COL_C + '; background-color: ' + COL_B + ';');
 
     const DB = getDatabase();
-    const REF = query(ref(DB, _path), limitToFirst(_limit), orderByValue('score'));
+    const REF = query(ref(DB, _path), orderByChild('score'), limitToLast(_limit));
     return get(REF).then((snapshot) => {
         return snapshot.val();
     }).catch((error) => {

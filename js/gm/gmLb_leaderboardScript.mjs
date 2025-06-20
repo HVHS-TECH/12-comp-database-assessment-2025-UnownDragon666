@@ -36,11 +36,12 @@ gmLb_fetchLeaderboard(currentLeaderboard);
 /*******************************************************/
 // gmLb_fetchLeaderboard()
 // Fetch leaderboard data  from firebase
-// Input: _leaderboard as a string (leaderboard to fetch), _game as a string (game to fetch leaderboard for)
+// Input: _diff as a string (difficulty of leaderboard to fetch), 
+//        _game as a string (game to fetch leaderboard for)
 // Returns: N/A
 /*******************************************************/
-function gmLb_fetchLeaderboard(_game, _leaderboard) {
-    const LEADERBOARD_DATA = fb_query(`${_game}/${_leaderboard}`, 50);
+function gmLb_fetchLeaderboard(_game, _diff) {
+    const LEADERBOARD_DATA = fb_query(`highscores/games/${_game}/difficulties/${_diff},/scores`, 20);
     // Console log for development purposes
     console.log(LEADERBOARD_DATA);
 
