@@ -27,10 +27,10 @@ const games = {
         description: 'Help the villagers collect the falling stars.',
         url: './html/cts/cts_startScreen.html'
     },
-    'd_whackAMoleContainer': {
-        title: 'Whack a Mole',
-        description: 'Whack some moles with friends!',
-        url: './html/wam/wam_startScreen.html'
+    'd_gameThatWorksContainer': {
+        title: 'Game That Works',
+        description: 'Collect some coins...!',
+        url: './html/gtw/gtw_startScreen.html'
     },
     'game3': {
         title: 'Game 3 Title',
@@ -47,7 +47,7 @@ const games = {
 /*******************************************************/
 // Imports
 /*******************************************************/
-import { fb_authenticate, fb_loggedIn } from '../fb/fb_io.mjs';
+import { fb_loggedIn } from '../fb/fb_io.mjs';
 
 /*******************************************************/
 // Main functionality of page
