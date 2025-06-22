@@ -25,16 +25,29 @@
                             "$diff": {
                                 "scores": {
                                     ".read": "auth != null",
+                                    ".indexOn": [
+                                        "score"
+                                    ],
                                     "$uid": {
                                         ".read": "auth.uid === $uid",
                                         ".write": "auth.uid === $uid",
                                         "score": {
-                                            ".read": "auth != null",
-                                            ".indexOn": [
-                                                ".value"
-                                            ]
+                                            ".read": "auth != null"
                                         }
                                     }
+                                }
+                            }
+                        },
+                        "scores": {
+                            ".read": "auth != null",
+                            ".indexOn": [
+                                "score"
+                            ],
+                            "$uid": {
+                                ".read": "auth.uid === $uid",
+                                ".write": "auth.uid === $uid",
+                                "score": {
+                                    ".read": "auth != null"
                                 }
                             }
                         }
@@ -48,16 +61,31 @@
                     "$diff": {
                         "scores": {
                             ".read": "auth != null",
+                            ".indexOn": [
+                                "score"
+                            ],
                             "$uid": {
                                 ".read": "auth.uid === $uid",
                                 ".write": "auth.uid === $uid",
                                 "score": {
-                                    ".read": "auth != null",
-                                    ".indexOn": [
-                                        ".value"
-                                    ]
+                                    ".read": "auth != null"
                                 }
                             }
+                        }
+                    }
+                }
+            },
+            "gtw": {
+                "scores": {
+                    ".read": "auth != null",
+                    ".indexOn": [
+                        "score"
+                    ],
+                    "$uid": {
+                        ".read": "auth.uid === $uid",
+                        ".write": "auth.uid === $uid",
+                        "score": {
+                            ".read": "auth != null"
                         }
                     }
                 }

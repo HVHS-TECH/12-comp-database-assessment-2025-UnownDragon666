@@ -9,15 +9,17 @@ console.log('script running');
 /*******************************************************/
 let player;
 let score = 0;
-let highScore = 0;
 let coins;
 let gameState = 'play';
-let retryButton;
-let loseState = false;
 
-const COINTIMEOUT = 5000;
+const COINTIMEOUT = 2000;
 const MOVEMENTSPEED = 9;
 const COINSIZE = 20;
+const COINSPAWNRATE = 2500;
+const ENDTIME = 30000; // 30 seconds
+const PARTICLESIZE = 5;
+const PARTICLESPEED = 10;
+const PARTICLELIFETIME = 10;
 
 /*******************************************************/
 // setup()
@@ -48,7 +50,6 @@ function draw() {
         // User lost 
         loseScreen();
     }
-    highScoreDisplay();
 }
 
 /*******************************************************/
@@ -66,7 +67,7 @@ function runGame() {
     displayScore();
 
     // Coins
-    if (random(0, 5000) < 30) {
+    if (random(0, COINSPAWNRATE) < 50) {
         console.log("coin created")
         createCoin();
     }
@@ -74,51 +75,41 @@ function runGame() {
     // Check if coin should be removed based on how long it has been alive
     for (let i = 0; i < coins.length; i++) {
         if (checkCoinTime(coins[i])) {
-            console.log('Game lost')
             coins[i].remove();
-            gameState = 'lose';
         }
+    }
+
+    showTimer();
+
+    // Check if time to end game
+    if (millis() > ENDTIME) {
+        endScreen();
     }
 }
 
 /*******************************************************/
-// loseScreen()
+// endScreen()
 // Changes gamescreen to lose screen
 // Called in draw loop when a coin times out
 // Input: N/A 
 // Output: N/A
 /*******************************************************/
-function loseScreen() {
-    player.remove();
-    coins.remove();
-    background('red');
-    fill('white');
-    text('YOU LOSE', width / 2, height / 2);
-    text('SCORE: ' + score, width / 2, height / 2 - 100);
-
-    if (loseState == false) {
-        // Button to restart game
-        retryButton = createButton('RETRY', 'button');
-        retryButton.position(width / 2, height / 2 + 100);
-        retryButton.mousePressed(restartGame);
-        loseState = true;
-    }
-
+function endScreen() {
+    // Upload score to sessionStorage
+    sessionStorage.setItem('game_playerScore', score);
+    window.location.href = './end_gameScoreScreen.html';
 }
 
 /*******************************************************/
-// restartGame()
-// Changes gamescreen back to runGame()
-// Called on loseScreen, restarts game
+// showTimer()
+// Displays timer   
+// Called in runGame()
 // Input: N/A 
 // Output: N/A
 /*******************************************************/
-function restartGame() {
-    score = 0;
-    gameState = 'play';
-    loseState = false;
-    retryButton.remove();
-    setup();
+function showTimer() {
+    fill('white');
+    text("Time: " + Math.floor(millis() / 1000), width - 100, 30);
 }
 
 /*******************************************************/
@@ -130,13 +121,13 @@ function restartGame() {
 /*******************************************************/
 function movePlayer() {
     // Up and down
-    if (kb.pressing('w')) {
+    if (kb.pressing('w') || kb.pressing('up')) {
         player.vel.y = -1 * MOVEMENTSPEED;
-    } else if (kb.pressing('s')) {
+    } else if (kb.pressing('s') || kb.pressing('down')) {
         player.vel.y = MOVEMENTSPEED;
     }
 
-    if (kb.released('w') || kb.released('s')) {
+    if (kb.released('w') || kb.released('s') || kb.released('up') || kb.released('down')) {
         player.vel.y = 0;
     }
 
@@ -150,6 +141,19 @@ function movePlayer() {
     if (kb.released('a') || kb.released('d')) {
         player.vel.x = 0;
     }
+
+    // Loop around canvas
+    if (player.x < 0) {
+        player.x = width;
+    } else if (player.x > width) {
+        player.x = 0;
+    }
+
+    if (player.y < 0) {
+        player.y = height;
+    } else if (player.y > height) {
+        player.y = 0;
+    }
 }
 
 /*******************************************************/
@@ -162,20 +166,6 @@ function movePlayer() {
 function displayScore() {
     fill('white');
     text("Score: " + score, 10, 30);
-}
-
-/*******************************************************/
-// highScoreDisplay()
-// Displays highest score achieved by player.
-// Called in draw loop
-// Input: N/A 
-// Output: N/A
-/*******************************************************/
-function highScoreDisplay() {
-    if (score >= highScore) {
-        highScore = score;
-    }
-    text("High Score: " + highScore, width / 2 - 50, 30);
 }
 
 /*******************************************************/
@@ -220,7 +210,7 @@ function checkCoinTime(_coin) {
 function coinCollected(_player, _coin) {
     console.log('coin collected')
     // Increase score
-    score++;
+    score = score + 1 + Math.floor(((millis() / 1000) - _coin.spawnTime / 1000) * (Math.PI) ** 2 / (Math.E));
     // Delete coin
     _coin.collected = true;
     _coin.remove();
@@ -229,4 +219,12 @@ function coinCollected(_player, _coin) {
     player.rotation = 0;
     player.vel.x = 0;
     player.vel.y = 0;
+    // Some particles for visual interest
+    for (let i = 0; i < random(8, 20); i++) {
+        let particle = createSprite(_coin.x, _coin.y, PARTICLESIZE, PARTICLESIZE, 'n');
+        particle.vel.x = random(-PARTICLESPEED, PARTICLESPEED);
+        particle.vel.y = random(-PARTICLESPEED, PARTICLESPEED);
+        particle.color = 'yellow';
+        particle.life = PARTICLELIFETIME;
+    }
 }

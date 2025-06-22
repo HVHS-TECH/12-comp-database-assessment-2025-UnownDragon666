@@ -209,7 +209,7 @@ window.end_toSettingsPage = end_toSettingsPage;
 // Returns: N/A
 /*******************************************************/
 function end_toHubPage() {
-    window.location.href = '../../index.html';
+    window.location.href = '../../index .html';
 }
 
 window.end_toHubPage = end_toHubPage;

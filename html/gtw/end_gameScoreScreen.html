@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>End Screen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/gtw/gtw_style.css">
+</head>
+
+<body onload="setup()">
+    <div id="d_contentContainer">
+        <h1 id="h_gameTitle">Game That Works</h1>
+        <p id="p_endText">Your score: <span id="sp_score"></span></p>
+    </div>
+
+    <div id="d_buttonContainer">
+        <button class="end_button" id="b_replayButton" onclick="replay()">Again!</button>
+        <button class="end_button" id="b_submitScoreButton" onclick="submit()">Submit score</button>
+        <button class="end_button" id="b_homeButton" onclick="home()">Home</button>
+    </div>
+
+    <!-- JS -->
+    <script type="module" src="../../js/gtw/end_scoreScreenScript.js"></script>
+
+</body>
+
+</html>
