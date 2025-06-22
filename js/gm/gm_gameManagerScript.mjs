@@ -25,22 +25,20 @@ const games = {
     'd_catchTheStarsContainer': {
         title: 'Catch the Stars',
         description: 'Help the villagers collect the falling stars.',
-        url: './html/cts/cts_startScreen.html'
+        url: './html/cts/cts_startScreen.html',
+        buttonContent: 'Play Game'
     },
     'd_gameThatWorksContainer': {
         title: 'Game That Works',
         description: 'Collect some coins...!',
-        url: './html/gtw/gtw_startScreen.html'
+        url: './html/gtw/gtw_startScreen.html',
+        buttonContent: 'Play Game'
     },
-    'game3': {
-        title: 'Game 3 Title',
-        description: 'This game may or may not be under development.',
-        url: './#'
-    },
-    'game4': {
-        title: 'Game 4 Title',
-        description: 'This game may or may not be under development.',
-        url: './#'
+    'd_feedbackFormContainer': {
+        title: 'Feedback Form!',
+        description: 'Send me some feedback with this form! All feedback is appreciated. ^^',
+        url: 'https://forms.gle/hjEaQHqakzuSr6bf9',
+        buttonContent: 'Give me feedback'
     }
 };
 
@@ -64,6 +62,7 @@ Object.keys(games).forEach(id => {
         const game = games[id];
         modalTitle.textContent = game.title;
         modalDescription.textContent = game.description;
+        modalPlayButton.textContent = game.buttonContent;
         modalPlayButton.onclick = gm_goToPage.bind(null, game.url);
         modal.style.display = 'flex';
     })
