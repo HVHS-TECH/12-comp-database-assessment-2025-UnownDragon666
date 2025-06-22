@@ -20,7 +20,7 @@ const LBSELECT = document.getElementById('s_chooseLeaderboard');
 /*******************************************************/
 // Imports 
 /*******************************************************/
-import { fb_initialise, fb_query, fb_updateLoginStatus, fb_readRec, fb_leaderboardAuthState } from '../fb/fb_io.mjs';
+import { fb_initialise, fb_query, fb_readRec, fb_leaderboardAuthState } from '../fb/fb_io.mjs';
 
 /*******************************************************/
 // Main functionality of page    
@@ -28,8 +28,8 @@ import { fb_initialise, fb_query, fb_updateLoginStatus, fb_readRec, fb_leaderboa
 // Check which leaderboard to diplay through select option on the page
 LBSELECT.addEventListener('change', () => {
     currentLeaderboard = LBSELECT.value;
-    if (currentLeaderboard == "gts") {
-        currentGame = "gts";
+    if (currentLeaderboard == "gtw") {
+        currentGame = "gtw";
     } else {
         currentGame = "cts";
     }
@@ -49,6 +49,13 @@ fb_leaderboardAuthState(currentGame, currentLeaderboard);
 // Returns: N/A
 /*******************************************************/
 function gmLb_fetchLeaderboard(_game, _diff) {
+    if (_game == "gtw") {
+        fb_query(`highscores/games/${_game}/scores`, 20).then((snapshot) => {
+            gmLb_displayLeaderboard(snapshot);
+        })
+        return;
+    }
+
     fb_query(`highscores/games/${_game}/difficulties/${_diff}/scores`, 20).then((snapshot) => {
         gmLb_displayLeaderboard(snapshot);
     });
@@ -73,7 +80,6 @@ window.loginMessage = gmLb_displayLoginMessage;
 // Returns: N/A
 /*******************************************************/
 async function gmLb_displayLeaderboard(_data) {
-
     // Clear leaderboard
     LEADERBOARD.innerHTML = '';
 
@@ -85,8 +91,6 @@ async function gmLb_displayLeaderboard(_data) {
     });
 
     _data.sort((a, b) => b.scoreObj.score - a.scoreObj.score);
-
-    console.log(_data);
 
     // Add data to leaderboard
     for (let i = 0; i < _data.length; i++) {
