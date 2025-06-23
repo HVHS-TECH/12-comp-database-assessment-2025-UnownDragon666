@@ -95,24 +95,38 @@ function fb_updateLoginStatus() {
     return new Promise((resolve, reject) => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
-            // check if user exists in DB, if so, display greeting
-            fb_readRec('accounts/' + user.uid).then((data) => {
-                if (data !== null) {
-                    document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
-                    document.getElementById('b_login').style.display = 'none';
-                    document.getElementById('b_logout').disabled = false;
-                    resolve(true);
+            if (user !== null) {
+                if ('uid' in user) {
+                    fb_readRec('accounts/' + user.uid).then((data) => {
+                        // check if user exists in DB, if so, display greeting
+                        if (data !== null) {
+                            document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
+                            document.getElementById('b_login').style.display = 'none';
+                            document.getElementById('b_logout').disabled = false;
+                            resolve(true);
+                        } else {
+                            document.getElementById('p_userGreeting').textContent = 'Please log in';
+                            document.getElementById('b_login').style.display = 'block';
+                            document.getElementById('b_logout').disabled = true;
+                            resolve(false);
+                        }
+                    })
                 } else {
-                    document.getElementById('p_userGreeting').textContent = 'Please log in';
-                    document.getElementById('b_login').style.display = 'block';
-                    document.getElementById('b_logout').disabled = true;
+                    // handle the case where user is logged in but doesn't have a displayName property
                     resolve(false);
                 }
-            })
+            } else {
+                // handle the case where user is not logged in
+                document.getElementById('p_userGreeting').textContent = 'Please log in';
+                document.getElementById('b_login').style.display = 'block';
+                document.getElementById('b_logout').disabled = true;
+                resolve(false);
+            }
         }, (error) => {
             reject(error);
         });
     });
+
 }
 
 /*******************************************************/
