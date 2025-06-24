@@ -26,3 +26,40 @@
     border-radius: 50%;
     border: 0.1rem solid var(--highlightHover);
 }
+
+#d_profileButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 0.3rem inset var(--highlightColor);
+    background: var(--buttonBg);
+    transition: background 0.3s ease;
+}
+
+.profileButton {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 50%;
+    background-color: var(--buttonBg);
+    border: none;
+    padding: 1rem;
+    font-weight: bold;
+    color: var(--textColor);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.profileButton:hover {
+    background-color: var(--highlightColor);
+    color: black;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.profileButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

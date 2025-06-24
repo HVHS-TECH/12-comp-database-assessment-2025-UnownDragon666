@@ -11,7 +11,7 @@ console.log('%cfb_io.mjs running',
 // Variables
 
 // Imports
-import { getDatabase, ref, set, get, update, query, limitToLast, orderByChild, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+import { getDatabase, ref, set, get, update, query, limitToLast, orderByChild, serverTimestamp, remove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { GoogleAuthProvider, getAuth, signOut, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
@@ -20,7 +20,7 @@ export {
     fb_initialise, fb_authenticate, fb_readRec, fb_writeRec,
     fb_logout, fb_loggedIn, getAuth, fb_updateLoginStatus,
     fb_profileAuthState, fb_updateRec, serverTimestamp, fb_query,
-    fb_leaderboardAuthState
+    fb_leaderboardAuthState, fb_deleteRec
 }
 
 /*******************************************************/
@@ -140,7 +140,11 @@ function fb_profileAuthState() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            gmAcc_displayProfile(user);
+            const path = 'accounts/' + user.uid;
+            fb_readRec(path).then((data) => {
+                gmAcc_displayProfile(data);
+            })
+
         } else {
             gmAcc_displayLoginMessage();
         }
@@ -278,5 +282,24 @@ function fb_updateRec(_path, _data) {
         console.log('Data updated successfully');
     }).catch((error) => {
         console.error('Error updating data: ', error);
+    });
+}
+
+/*******************************************************/
+// fb_deleteRec
+// Delete a record from Firebase
+// Input: _path as a string (path to delete)
+// Returns: N/A
+/*******************************************************/
+function fb_deleteRec(_path) {
+    console.log('%c fb_deleteRec(): ',
+        'color: ' + COL_C + '; background-color: ' + COL_B + ';');
+
+    const DB = getDatabase();
+    const REF = ref(DB, _path);
+    remove(REF).then(() => {
+        console.log('Data deleted successfully');
+    }).catch((error) => {
+        console.error('Error deleting data: ', error);
     });
 }
