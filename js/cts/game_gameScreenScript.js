@@ -16,7 +16,7 @@ let score = 0;
 let lives = sessionStorage.getItem('lives');
 let canvasWidth, canvasHeight;
 let glitchStartTime = -1;
-let debugged = false; 
+let debugged = false;
 
 // Collectibles
 let collectibleGroup;
@@ -911,7 +911,7 @@ window.addEventListener('resize', () => {
 // Returns: N/A
 /*******************************************************/
 function game_returnHome() {
-    window.location.assign('../../../index.html');
+    window.location.assign('../../index.html');
 }
 
 /*******************************************************/

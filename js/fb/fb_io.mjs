@@ -100,7 +100,7 @@ function fb_updateLoginStatus() {
                     fb_readRec('accounts/' + user.uid).then((data) => {
                         // check if user exists in DB, if so, display greeting
                         if (data !== null) {
-                            document.getElementById('p_userGreeting').textContent = 'Hello ' + user.displayName + '!';
+                            document.getElementById('p_userGreeting').textContent = 'Hello ' + data.name + '!';
                             document.getElementById('b_login').style.display = 'none';
                             document.getElementById('b_logout').disabled = false;
                             resolve(true);

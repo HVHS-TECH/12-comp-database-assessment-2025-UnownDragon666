@@ -99,6 +99,9 @@ async function gmLb_displayLeaderboard(_data) {
         // Since scores are stored with uids, find the name of the user with their uid
         let name;
         name = await fb_readRec(`accounts/${_data[i].uid}/name`)
+        if (name === null) {
+            name = 'Anonymous';
+        }
         let row = document.createElement('tr');
         row.innerHTML = `<td>${i + 1}</td><td>${name}</td><td>${score}</td>`;
         LEADERBOARD.appendChild(row);
