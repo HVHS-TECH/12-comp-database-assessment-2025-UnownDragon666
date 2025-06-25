@@ -18,7 +18,7 @@ const sidebar = document.getElementById('s_sidebar');
 const sidebarToggle = document.getElementById('b_sidebarToggle');
 
 // Imports
-import { fb_initialise, fb_updateLoginStatus, fb_authenticate } from "../fb/fb_io.mjs";
+import { fb_initialise, fb_updateLoginStatus, fb_authenticate, fb_logout } from "../fb/fb_io.mjs";
 
 sidebarToggle.addEventListener('click', () => {
     sidebar.classList.toggle('collapsed');
@@ -36,7 +36,10 @@ window.authWithGoogle = () => {
             if (data !== null) {
                 window.location.href = './gmAcc_profile.html';
             } else {
+                // Log out user
+                fb_logout();
                 window.location.href = './gmReg_register.html';
+
             }
         })
     })
