@@ -20,7 +20,7 @@ const LBSELECT = document.getElementById('s_chooseLeaderboard');
 /*******************************************************/
 // Imports 
 /*******************************************************/
-import { fb_initialise, fb_query, fb_readRec, fb_leaderboardAuthState } from '../fb/fb_io.mjs';
+import { fb_initialise, fb_query, fb_readRec, fb_leaderboardAuthState, fb_updateLoginStatus } from '../fb/fb_io.mjs';
 
 /*******************************************************/
 // Main functionality of page    
@@ -38,6 +38,8 @@ LBSELECT.addEventListener('change', () => {
 
 // Initialise firebase
 fb_initialise();
+
+fb_updateLoginStatus();
 
 // Fetch relevant leaderboard data if the user is logged in, else display message
 fb_leaderboardAuthState(currentGame, currentLeaderboard);
