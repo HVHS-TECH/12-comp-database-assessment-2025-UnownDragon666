@@ -43,7 +43,6 @@ window.setup = () => {
 
 window.signup = () => {
     fb_authenticate().then(() => {
-        console.log('User authenticated');
         // Wait for user to chose Google account
         fb_readRec('accounts/' + getAuth().currentUser.uid).then((data) => {
             // Check if user already has an account
@@ -52,9 +51,25 @@ window.signup = () => {
                 setTimeout(() => {
                     window.location.href = './gmAcc_profile.html';
                 }, 3000);
-            } else if (data === null) {
+            } else if (data === null || data.termsAndConditions === false) {
                 // Run form function
                 gmReg_expandForm();
+
+                // Default values incase registration is cancelled
+                fb_writeRec('accounts/' + auth.currentUser.uid, {
+                    email: auth.currentUser.email,
+                    name: auth.currentUser.displayName,
+                    photoURL: auth.currentUser.photoURL,
+                    providerId: auth.currentUser.providerId,
+                    metadata: auth.currentUser.metadata,
+                    providerData: auth.currentUser.providerData,
+                    name: "anonymous",
+                    pronouns: "",
+                    birthdate: "",
+                    password: "",
+                    confirmPassword: "",
+                    termsAndConditions: false
+                })
             }
         })
     })
