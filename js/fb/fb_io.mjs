@@ -69,7 +69,7 @@ function fb_authenticate() {
         provider.setCustomParameters({ prompt: 'select_account' });
 
         signInWithPopup(auth, provider).then((result) => {
-            document.getElementById('p_userGreeting').textContent = 'Hello ' + result.user.displayName + '!';
+            document.getElementById('p_userGreeting').textContent = 'Hello ' + result.user.name + '!';
             document.getElementById('b_login').style.display = 'none';
             document.getElementById('b_logout').disabled = false;
             auth.onAuthStateChanged((user) => {

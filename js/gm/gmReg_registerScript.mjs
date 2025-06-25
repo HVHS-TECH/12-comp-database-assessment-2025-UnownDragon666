@@ -54,6 +54,7 @@ window.signup = () => {
             } else if (data === null || data.termsAndConditions === false) {
                 // Run form function
                 gmReg_expandForm();
+                const auth = getAuth();
 
                 // Default values incase registration is cancelled
                 fb_writeRec('accounts/' + auth.currentUser.uid, {
