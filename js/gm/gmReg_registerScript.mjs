@@ -202,6 +202,12 @@ function gmReg_submitForm() {
     const confirmPassword = document.getElementById('i_confirmPassword').value;
     const terms = document.getElementById('i_terms').checked;
 
+    // Check if username is blank
+    if (name.trim() === '' || name === undefined || name === null) {
+        alert('Please enter a name');
+        return;
+    }
+
     // Check if passwords match
     if (password !== confirmPassword) {
         alert('Passwords do not match');
